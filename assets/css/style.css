@@ -4,13 +4,15 @@
   --colorEBEBEB: #EBEBEB;
   --colorADADAD: #ADADAD;
   --color595959: #595959;
+  --color191919: #191919;
   --colorBlack: #000000;
+  --colorPoint: #D27B30;
   --mobileMargin: 15px;
   --tabletMargin: 60px;
   --desktopMargin: 60px;
   --marginText: 8px;
   --marginBasic: 16px;
-  --transitionDuration: 500ms;
+  --transitionDuration: 400ms;
 
   --font-notosans: 'Noto Sans KR', serif;
   --font-roboto: 'Roboto', 'Noto Sans KR', serif;
@@ -150,11 +152,11 @@ a:hover, a:active {
 .detail-controls-button > svg {
   width: 36px;
   height: 36px;
-  fill: #595959;
+  fill: var(--color595959);
   transition: fill var(--transitionDuration);
 }
 .detail-controls-button:hover > svg {
-  fill: var(--colorBlack);
+  fill: var(--colorPoint);
 }
 
 
@@ -165,6 +167,7 @@ a:hover, a:active {
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+  min-height: 80vh;
   background-color: var(--colorWhite);
   padding: 0 calc(var(--mobileMargin) * 2);
 }
@@ -253,6 +256,7 @@ a:hover, a:active {
 }
 
 .option-item:hover {
+  color: var(--colorBlack);
   background-color: var(--colorEBEBEB);
   cursor: pointer;
 }
@@ -268,9 +272,14 @@ a:hover, a:active {
   width: 312px;
 }
 
-.preview-test-box label {
+.preview-label {
   display: block;
   margin-bottom: var(--marginText);
+}
+
+.preview-label.english::after {
+  content: " : Use english only";
+  color: var(--colorPoint);
 }
 
 .preview-input {
@@ -340,7 +349,7 @@ a:hover, a:active {
   left: -60px;
   width: 60px;
   height: 100%;
-  background: rgb(255,255,255);
+  background: var(--colorWhite);
   background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 85%);
 }
 
@@ -375,7 +384,7 @@ a:hover, a:active {
 .sidenav-close-button > svg {
   width: 40px;
   height: 40px;
-  fill: #adadad;
+  fill: var(--colorADADAD);
   transition: fill var(--transitionDuration);
 }
 .sidenav-close-button:hover > svg {
@@ -503,7 +512,7 @@ a:hover, a:active {
   align-items: center;
 }
 
-.checkbox-item input {
+.fontsize-checkbox {
   display: none;
 }
 
@@ -517,9 +526,9 @@ a:hover, a:active {
   cursor: pointer;
 }
 
-.checkbox-item input:checked + label {
+.fontsize-checkbox:checked + label {
   background-color: var(--colorBlack);
-  background-image: url(/assets/images/chedcked.svg);
+  background-image: url(../images/checked.svg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -582,6 +591,9 @@ a:hover, a:active {
 }
 
 #onoff-toggle:checked + .onoff-toggle-label {
+  background-color: var(--colorWhite);
+}
+#onoff-toggle:checked + .onoff-toggle-label::before {
   background-color: var(--colorBlack);
 }
 
@@ -609,15 +621,82 @@ a:hover, a:active {
   border-bottom: 1px solid var(--colorADADAD);
 }
 
+/* Dark Mode On */
+.body-container.darkmode {
+  color: var(--colorWhite);
+  background-color: var(--colorBlack);
+}
+.body-container.darkmode #header,
+.body-container.darkmode #main-contents,
+.body-container.darkmode .selected-item,
+.body-container.darkmode .option-items,
+.body-container.darkmode .option-item-list,
+.body-container.darkmode .font-size,
+.body-container.darkmode .preview-input {
+  color: var(--colorWhite);
+  background-color: var(--colorBlack);
+}
+.body-container.darkmode .selected-item-button,
+.body-container.darkmode .preview-input {
+  border: 1px solid var(--colorWhite);
+}
+
+.body-container.darkmode .font-preview-header {
+  border-top: 2px solid var(--colorWhite);
+  border-bottom: 1px solid var(--colorWhite);
+}
+
+.body-container.darkmode .toggle-arrow > svg,
+.body-container.darkmode .detail-controls-button > svg {
+  fill: var(--colorEBEBEB);
+}
+
+.body-container.darkmode .detail-controls-button:hover > svg,
+.body-container.darkmode .sidenav-close-button:hover > svg {
+  fill: var(--colorPoint);
+}
+
+.body-container.darkmode .fontweight-lists li:hover {
+  color: var(--colorBlack);
+  background-color: var(--colorEBEBEB);
+}
+.body-container.darkmode .fontweight-list-btn.active {
+  color: var(--colorBlack);
+}
+
+.body-container.darkmode .option-item.active {
+  color: var(--colorBlack);
+  background-color: var(--colorADADAD);
+}
+
+.body-container.darkmode .font-size::before {
+  background: var(--colorBlack);
+  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6615021008403361) 25%, rgba(0,0,0,1) 66%);
+}
+
+.body-container.darkmode #header {
+  color: var(--colorWhite);
+  background-color: var(--colorBlack);
+  box-shadow: none;
+  border-bottom: 1px solid var(--colorWhite);
+}
+
+
+.body-container.darkmode #footer {
+  color: var(--colorWhite);
+  background-color: var(--color191919);
+}
+
+.body-container.darkmode .sidenav {
+  color: var(--colorWhite);
+  background-color: var(--colorBlack);
+  box-shadow: none;
+  border-left: 1px solid var(--colorWhite);
+}
 
 
 
 /* Styles */
-#main-contents.darkmode {
-  /* background-color: var(--colorBlack);
-  color: var(--colorWhite); */
-}
-
 .style-notosans {
   font-family: var(--font-notosans);
 }
@@ -654,6 +733,10 @@ a:hover, a:active {
   align-items: center;
   height: 98%;
 }
+.toggle-arrow > svg {
+  fill: var(--colorBlack);
+}
+
 .toggle-arrow.open {
   transform: rotate(180deg);
 }
@@ -665,6 +748,21 @@ a:hover, a:active {
   display: none;
 }
 
+/* FOOTER */
+#footer {
+  height: 10vh;
+  font-size: 12px;
+  padding: 0px calc(var(--mobileMargin) * 2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: var(--colorEBEBEB);
+}
+
+#footer b {
+  color: var(--colorPoint);
+}
 
 
 
@@ -692,7 +790,12 @@ a:hover, a:active {
   .contents-container.active {
     max-width: calc(100% - 321px);
   }
-  
+
+  #footer {
+    height: 12vh;
+    font-size: 14px;
+    padding: 0px var(--tabletMargin);
+  }
 }
 
 @media screen and (min-width: 1440px) {

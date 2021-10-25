@@ -1,36 +1,37 @@
 // 0. 폰트 사이즈 별 텍스트 아이템 객체 생성
 
-// 1) 생성자 함수
-function CreateFontListObj(fontSize) {
-  this.fontSize = fontSize,
-  this.fontStyle = 'Noto Sans KR',
-  this.textMessage = 'Noto Sans KR 노토 산스'
-  this.fontWeight = 'regular',
-  this.letterSpace = 0
+// 1) Class
+class CreateFontList {
+  constructor(fontSize) {
+    this.fontSize = fontSize,
+    this.fontStyle = 'Noto Sans KR',
+    this.textMessage = 'Noto Sans KR 노토 산스'
+    this.fontWeight = 'regular',
+    this.letterSpace = 0
+  }
+
+  changeFontStyleObj(fontStyle) {
+    this.fontStyle = fontStyle;
+  }
+
+  changeFontWeightObj(fontWeight) {
+    this.fontWeight = fontWeight;
+  }
+
+  changeLetterSpacingObj(letterSpace) {
+    this.letterSpace = letterSpace;
+  }
+
+  changeTextMessageObj(message) {
+    this.textMessage = message;
+  }
 }
 
-// 2) 변경감지 함수
-CreateFontListObj.prototype.changeFontStyleObj = function(fontStyle) {
-  this.fontStyle = fontStyle;
-}
-
-CreateFontListObj.prototype.changeFontWeightObj = function(fontWeight) {
-  this.fontWeight = fontWeight;
-}
-
-CreateFontListObj.prototype.changeLetterSpacingObj = function(letterSpace) {
-  this.letterSpace = letterSpace;
-}
-
-CreateFontListObj.prototype.changeTextMessageObj = function(message) {
-  this.textMessage = message;
-}
-
-// 3) 자료구조
+// 2) 자료구조
 const fontListArr = [];
 
 
-// -----------------------------------------------------
+// -------------------------------------
 
 
 // 1. 함수
@@ -65,12 +66,12 @@ function createHTMLString(array) {
 
 // 3) <li> initialize
 const initFirstPage = function() {
-  const checkboxs = document.querySelectorAll('.fscb');
+  const checkboxs = document.querySelectorAll('.fontsize-checkbox');
 
   checkboxs.forEach(el => {
     if(el.checked) {
       const fontSize = el.id;
-      const listItem = new CreateFontListObj(fontSize);
+      const listItem = new CreateFontList(fontSize);
       fontListArr.push(listItem);
     }
   })
@@ -127,17 +128,21 @@ const changeFontStyle = function(fontStyle) {
     switch(fontStyle) {
       case 'Noto Sans KR' :
         previewText = `${fontStyle} 노토 산스`;
+        UseKRfonts();
         break;
       case 'Spoqa Han Sans Neo' :
         previewText = `${fontStyle} 스포카 한 산스`;
+        UseKRfonts();
         break;
       case 'Nanum Gothic' :
         previewText = `${fontStyle} 나눔 고딕`;
+        UseKRfonts();
         break;
       case 'Roboto' :
       case 'Open Sans' :
       case 'Lato' :
-        previewText = `${fontStyle} use only english font`;
+        previewText = `${fontStyle} use english font only`;
+        UseENfonts();
         break;
       default:
         previewText = 'Error';
@@ -163,10 +168,19 @@ const changePreviewText = function(e) {
   })
 }
 
-// 5-2) Alert 
-const alertKoreanUse = function(e) {
-
+// 5-2) Alert Use Only English
+const UseKRfonts = function() {
+  const previewLabel = document.querySelector('.preview-label');
+  if (previewLabel.classList.contains('english')) {
+    previewLabel.classList.remove('english');
+  }
 }
+
+const UseENfonts = function() {
+  const previewLabel = document.querySelector('.preview-label');
+  previewLabel.classList.add('english');
+}
+
 
 
 // 6) Font Weight
@@ -250,7 +264,7 @@ const changeFontListPropertiesAllItems = function(array) {
 // 9-2) Checked Checkbox - Add <li>
   const addList = function(fontSize) {
     // 객체 생성
-    const checkedItem = new CreateFontListObj(fontSize);
+    const checkedItem = new CreateFontList(fontSize);
 
     // 배열 push
     fontListArr.push(checkedItem);
@@ -301,11 +315,14 @@ const changeFontListPropertiesAllItems = function(array) {
   const darkmode = function(e) {
     const onoffCheckbox = document.querySelector('#onoff-toggle');
     const onoffText = document.querySelector('.onoff-text');
+    const container = document.querySelector('.body-container')
 
     if(!onoffCheckbox.checked) {
       onoffText.innerHTML = 'On';
+      container.classList.add('darkmode')
     } else {
       onoffText.innerHTML = 'Off';
+      container.classList.remove('darkmode')
     }
   }
 
@@ -358,7 +375,7 @@ const changeFontListPropertiesAllItems = function(array) {
   }
 
 
-// -----------------------------------------------------
+// -------------------------------------
 
 
 // 2. Event Listener
@@ -405,7 +422,7 @@ document.addEventListener('click', e => {
     toggleCheckboxtBox();
   }
   // d-2)select font size
-  if(e.target.matches('.fscb')) {
+  if(e.target.matches('.fontsize-checkbox')) {
     selectFontSize(e);
   }
 
@@ -440,7 +457,7 @@ window.addEventListener('resize', e => changeWindowSizeMoToWindow(e));
 
 
 
-// -----------------------------------------------
+// -------------------------------------
 
 // 3. 사이트 로드하자마자 fontsize list 생성
 const windowRoadInit = (function() {
