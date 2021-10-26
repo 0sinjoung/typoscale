@@ -1,10 +1,10 @@
 /* CSS Variable */
 :root {
   --colorWhite: #FFFFFF;
-  --colorEBEBEB: #EBEBEB;
-  --colorADADAD: #ADADAD;
-  --color595959: #595959;
-  --color191919: #191919;
+  --colorWhitegrey: #EBEBEB;
+  --colorLightgrey: #ADADAD;
+  --colorGrey: #595959;
+  --colorDarkgrey: #191919;
   --colorBlack: #000000;
   --colorPoint: #D27B30;
   --mobileMargin: 15px;
@@ -152,7 +152,7 @@ a:hover, a:active {
 .detail-controls-button > svg {
   width: 36px;
   height: 36px;
-  fill: var(--color595959);
+  fill: var(--colorGrey);
   transition: fill var(--transitionDuration);
 }
 .detail-controls-button:hover > svg {
@@ -200,7 +200,7 @@ a:hover, a:active {
   display: flex;
   justify-content: space-between;
   border-radius: 8px;
-  border: 1px solid var(--colorADADAD);
+  border: 1px solid var(--colorLightgrey);
   cursor: pointer;
   overflow: hidden;
 }
@@ -215,7 +215,7 @@ a:hover, a:active {
   height: 100%;
   font-size: 14px;
   line-height: 44px;
-  color: var(--color595959);
+  color: var(--colorGrey);
 }
 
 .option-items {
@@ -230,7 +230,7 @@ a:hover, a:active {
 
 .option-items.open {
   height: 272px;
-  border: 1px solid var(--colorADADAD);
+  border: 1px solid var(--colorLightgrey);
   border-top: 0px;
   border-radius: 0px 0px 8px 8px;
   overflow: visible;
@@ -248,7 +248,7 @@ a:hover, a:active {
   width: 100%;
   height: 100%;
   padding: 0 var(--marginBasic);
-  border-top: 1px solid var(--colorEBEBEB);
+  border-top: 1px solid var(--colorWhitegrey);
 }
 
 .option-item-list:first-child > .option-item {
@@ -257,12 +257,12 @@ a:hover, a:active {
 
 .option-item:hover {
   color: var(--colorBlack);
-  background-color: var(--colorEBEBEB);
+  background-color: var(--colorWhitegrey);
   cursor: pointer;
 }
 
 .option-item.active {
-  background-color: var(--colorADADAD);
+  background-color: var(--colorLightgrey);
 }
 
 
@@ -289,7 +289,7 @@ a:hover, a:active {
   height: 44px;
   padding: 0px var(--marginBasic);
   border-radius: 8px;
-  border: 1px solid var(--colorADADAD);
+  border: 1px solid var(--colorLightgrey);
   font-size: 14px;
 }
 
@@ -384,7 +384,7 @@ a:hover, a:active {
 .sidenav-close-button > svg {
   width: 40px;
   height: 40px;
-  fill: var(--colorADADAD);
+  fill: var(--colorLightgrey);
   transition: fill var(--transitionDuration);
 }
 .sidenav-close-button:hover > svg {
@@ -404,7 +404,7 @@ a:hover, a:active {
 
 .fontweight-lists {
   /* height: 100%; */
-  border-top: 1px solid var(--colorEBEBEB);
+  border-top: 1px solid var(--colorWhitegrey);
   padding: var(--marginBasic) 0px;
 }
 
@@ -414,7 +414,7 @@ a:hover, a:active {
 }
 
 .fontweight-lists li:hover {
-  background-color: var(--colorEBEBEB);
+  background-color: var(--colorWhitegrey);
 }
 
 .fontweight-list-btn {
@@ -424,7 +424,7 @@ a:hover, a:active {
 }
 
 .fontweight-list-btn.active {
-  background-color: var(--colorADADAD);
+  background-color: var(--colorLightgrey);
 }
 
 
@@ -460,7 +460,7 @@ a:hover, a:active {
   appearance: none;
   width: 200px; 
   height: 2px;
-  background: var(--colorADADAD);
+  background: var(--colorLightgrey);
   outline: none;
 }
 
@@ -471,7 +471,7 @@ a:hover, a:active {
   width: 22px;
   height: 22px;
   background: var(--colorWhite);
-  border: 2px solid var(--colorADADAD);
+  border: 2px solid var(--colorLightgrey);
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   cursor: pointer; 
@@ -481,7 +481,7 @@ a:hover, a:active {
   width: 22px;
   height: 22px;
   background: var(--colorWhite);
-  border: 2px solid var(--colorADADAD);
+  border: 2px solid var(--colorLightgrey);
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   cursor: pointer; 
@@ -521,7 +521,7 @@ a:hover, a:active {
   width: 24px;
   height: 24px;
   background-color: var(--colorWhite);
-  border: 1px solid var(--colorADADAD);
+  border: 1px solid var(--colorLightgrey);
   border-radius: 4px;
   cursor: pointer;
 }
@@ -573,7 +573,7 @@ a:hover, a:active {
   width: 56px;
   height: 32px;
   border-radius: 16px;
-  background-color: var(--colorADADAD);
+  background-color: var(--colorLightgrey);
   cursor: pointer;
   transition: background-color 0.5s;
 }
@@ -618,13 +618,13 @@ a:hover, a:active {
 .fontweight-control-box,
 .fontsize-control-box,
 .letterspacing-control-box {
-  border-bottom: 1px solid var(--colorADADAD);
+  border-bottom: 1px solid var(--colorLightgrey);
 }
 
 /* Dark Mode On */
 .body-container.darkmode {
   color: var(--colorWhite);
-  background-color: var(--colorBlack);
+  background-color: var(--colorDarkgrey);
 }
 .body-container.darkmode #header,
 .body-container.darkmode #main-contents,
@@ -634,7 +634,7 @@ a:hover, a:active {
 .body-container.darkmode .font-size,
 .body-container.darkmode .preview-input {
   color: var(--colorWhite);
-  background-color: var(--colorBlack);
+  background-color: var(--colorDarkgrey);
 }
 .body-container.darkmode .selected-item-button,
 .body-container.darkmode .preview-input {
@@ -648,7 +648,7 @@ a:hover, a:active {
 
 .body-container.darkmode .toggle-arrow > svg,
 .body-container.darkmode .detail-controls-button > svg {
-  fill: var(--colorEBEBEB);
+  fill: var(--colorWhitegrey);
 }
 
 .body-container.darkmode .detail-controls-button:hover > svg,
@@ -657,26 +657,26 @@ a:hover, a:active {
 }
 
 .body-container.darkmode .fontweight-lists li:hover {
-  color: var(--colorBlack);
-  background-color: var(--colorEBEBEB);
+  color: var(--colorDarkgrey);
+  background-color: var(--colorWhitegrey);
 }
 .body-container.darkmode .fontweight-list-btn.active {
-  color: var(--colorBlack);
+  color: var(--colorDarkgrey);
 }
 
 .body-container.darkmode .option-item.active {
-  color: var(--colorBlack);
-  background-color: var(--colorADADAD);
+  color: var(--colorDarkgrey);
+  background-color: var(--colorLightgrey);
 }
 
 .body-container.darkmode .font-size::before {
-  background: var(--colorBlack);
-  background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6615021008403361) 25%, rgba(0,0,0,1) 66%);
+  background: var(--colorDarkgrey);
+  background: linear-gradient(90deg, rgba(25,25,25,0) 0%, rgba(25,25,25,0.7091211484593838) 25%, rgba(25,25,25,1) 66%);;
 }
 
 .body-container.darkmode #header {
   color: var(--colorWhite);
-  background-color: var(--colorBlack);
+  background-color: var(--colorDarkgrey);
   box-shadow: none;
   border-bottom: 1px solid var(--colorWhite);
 }
@@ -684,12 +684,12 @@ a:hover, a:active {
 
 .body-container.darkmode #footer {
   color: var(--colorWhite);
-  background-color: var(--color191919);
+  background-color: var(--colorGrey);
 }
 
 .body-container.darkmode .sidenav {
   color: var(--colorWhite);
-  background-color: var(--colorBlack);
+  background-color: var(--colorDarkgrey);
   box-shadow: none;
   border-left: 1px solid var(--colorWhite);
 }
@@ -757,7 +757,7 @@ a:hover, a:active {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  background-color: var(--colorEBEBEB);
+  background-color: var(--colorWhitegrey);
 }
 
 #footer b {

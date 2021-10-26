@@ -50,7 +50,7 @@ function createHTMLString(array) {
     return `
     <li class="font-preview-item" style="font-size: ${item.fontSize}px">
       <div class="font-text" style="font-family: '${item.fontStyle}', serif">
-        <div class="text-p ${item.fontWeight}" style="letter-spacing: ${item.letterSpace}px">${item.textMessage}</div>
+        <p class="text-p ${item.fontWeight}" style="letter-spacing: ${item.letterSpace}px">${item.textMessage}</p>
       </div>
       <div class="font-size">${item.fontSize}</div>
     </li>`
@@ -65,22 +65,22 @@ function createHTMLString(array) {
 
 
 // 3) <li> initialize
-const initFirstPage = function() {
+const initFirstPage = function(array) {
   const checkboxs = document.querySelectorAll('.fontsize-checkbox');
 
   checkboxs.forEach(el => {
     if(el.checked) {
       const fontSize = el.id;
       const listItem = new CreateFontList(fontSize);
-      fontListArr.push(listItem);
+      array.push(listItem);
     }
   })
 
   // 오름차순 정렬
-  fontListArr.sort(compare('fontSize'));
+  array.sort(compare('fontSize'));
 
   // <li> HTML 생성
-  createHTMLString(fontListArr);
+  createHTMLString(array);
 }
 
 
@@ -122,8 +122,18 @@ const changeFontStyle = function(fontStyle) {
   let previewText = "";
 
   if(previewTextMessageInput.value) {
-    previewText = previewTextMessageInput.value;
-    previewTextMessageInput.placeholder = "";
+    switch(fontStyle) {
+      case 'Noto Sans KR': case 'Spoqa Han Sans Neo': case 'Nanum Gothic':
+        previewText = previewTextMessageInput.value;
+        previewTextMessageInput.placeholder = "";
+        UseKRfonts();
+      break; 
+        case 'Roboto': case 'Open Sans': case 'Lato':
+        previewText = previewTextMessageInput.value;
+        previewTextMessageInput.placeholder = "";
+        UseENfonts();
+      break;
+    }
   } else {
     switch(fontStyle) {
       case 'Noto Sans KR' :
@@ -138,9 +148,7 @@ const changeFontStyle = function(fontStyle) {
         previewText = `${fontStyle} 나눔 고딕`;
         UseKRfonts();
         break;
-      case 'Roboto' :
-      case 'Open Sans' :
-      case 'Lato' :
+      case 'Roboto': case 'Open Sans': case 'Lato':
         previewText = `${fontStyle} use english font only`;
         UseENfonts();
         break;
@@ -151,7 +159,6 @@ const changeFontStyle = function(fontStyle) {
     previewTextMessageInput.placeholder = previewText;
   }
 
-
   fontListArr.forEach(item => {
     item.changeFontStyleObj(fontStyle);
     item.changeTextMessageObj(previewText);
@@ -160,7 +167,7 @@ const changeFontStyle = function(fontStyle) {
 
 // 5) Preview Text
 // 5-1) Change Preview Text
-const changePreviewText = function(e) {
+const changePreviewText = function() {
   const previewInputValue = document.querySelector('.preview-input').value;
   const previewTextItem = document.querySelectorAll('.text-p');
   previewTextItem.forEach(e => {
@@ -168,7 +175,7 @@ const changePreviewText = function(e) {
   })
 }
 
-// 5-2) Alert Use Only English
+// 5-2) Alert Use English Only
 const UseKRfonts = function() {
   const previewLabel = document.querySelector('.preview-label');
   if (previewLabel.classList.contains('english')) {
@@ -185,7 +192,7 @@ const UseENfonts = function() {
 
 // 6) Font Weight
 // 6-1) Font Weight Btn Toggle
-const toggleFontWeightBox = function(e) {
+const toggleFontWeightBox = function() {
   const fontweightControlBox = document.querySelector('.fontweight-control-box');
   fontweightControlBox.classList.toggle('open');
   fontweightControlBox.querySelector('.toggle-arrow').classList.toggle('open');
@@ -312,7 +319,7 @@ const changeFontListPropertiesAllItems = function(array) {
 
 
 // 10) Dark Mode
-  const darkmode = function(e) {
+  const darkmode = function() {
     const onoffCheckbox = document.querySelector('#onoff-toggle');
     const onoffText = document.querySelector('.onoff-text');
     const container = document.querySelector('.body-container')
@@ -330,7 +337,7 @@ const changeFontListPropertiesAllItems = function(array) {
 
 // 11) Side Navigation
 // 11-1) show sidenav
-  const showSidenav = function(e) {
+  const showSidenav = function() {
     const sideNav = document.querySelector('.sidenav');
     const sideNavBtn = document.querySelector('.detail-controls-button');
     const contentsContainer = document.querySelector('.contents-container');
@@ -347,7 +354,7 @@ const changeFontListPropertiesAllItems = function(array) {
   }
 
 // 11-2) hide sidenav
-  const hideSidenav = function(e) {
+  const hideSidenav = function() {
     const sideNav = document.querySelector('.sidenav');
     const sideNavBtn = document.querySelector('.detail-controls-button');
     const contentsContainer = document.querySelector('.contents-container');
@@ -363,6 +370,7 @@ const changeFontListPropertiesAllItems = function(array) {
       contentsContainer.classList.remove('filter-blur');
     }
   }
+
   // 11-3) mobile size -> window size
   const changeWindowSizeMoToWindow = function(e) {
     const contentsContainer = document.querySelector('.contents-container');
@@ -461,6 +469,6 @@ window.addEventListener('resize', e => changeWindowSizeMoToWindow(e));
 
 // 3. 사이트 로드하자마자 fontsize list 생성
 const windowRoadInit = (function() {
-  initFirstPage()
+  initFirstPage(fontListArr)
 })();
 
