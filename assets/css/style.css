@@ -9,7 +9,7 @@
   --colorPoint: #D27B30;
   --mobileMargin: 15px;
   --tabletMargin: 60px;
-  --desktopMargin: 60px;
+  --desktopMargin: 120px;
   --marginText: 8px;
   --marginBasic: 16px;
   --transitionDuration: 400ms;
@@ -829,6 +829,12 @@ a:hover, a:active {
   .close-button-wrap {
     height: 132px;
     justify-content: flex-start;
+  }
+
+  #footer .footer-wrap{
+    width: 100%;
+    max-width: 1440px;
+    margin: 0px auto;
   }
 
 
