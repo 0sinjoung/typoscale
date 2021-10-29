@@ -1,7 +1,7 @@
 // 0. 폰트 사이즈 별 텍스트 아이템 객체 생성
 
 // 1) Class
-class CreateFontList {
+class FontList {
   constructor(fontSize) {
     this.fontSize = fontSize,
     this.fontStyle = 'Noto Sans KR',
@@ -10,19 +10,19 @@ class CreateFontList {
     this.letterSpace = 0
   }
 
-  changeFontStyleObj(fontStyle) {
+  changeFontStyle(fontStyle) {
     this.fontStyle = fontStyle;
   }
 
-  changeFontWeightObj(fontWeight) {
+  changeFontWeight(fontWeight) {
     this.fontWeight = fontWeight;
   }
 
-  changeLetterSpacingObj(letterSpace) {
+  changeLetterSpacing(letterSpace) {
     this.letterSpace = letterSpace;
   }
 
-  changeTextMessageObj(message) {
+  changeTextMessage(message) {
     this.textMessage = message;
   }
 }
@@ -71,7 +71,7 @@ const initFirstPage = function(array) {
   checkboxs.forEach(el => {
     if(el.checked) {
       const fontSize = el.id;
-      const listItem = new CreateFontList(fontSize);
+      const listItem = new FontList(fontSize);
       array.push(listItem);
     }
   })
@@ -160,8 +160,8 @@ const changeFontStyle = function(fontStyle) {
   }
 
   fontListArr.forEach(item => {
-    item.changeFontStyleObj(fontStyle);
-    item.changeTextMessageObj(previewText);
+    item.changeFontStyle(fontStyle);
+    item.changeTextMessage(previewText);
   })
 }
 
@@ -242,20 +242,20 @@ const changeFontListPropertiesAllItems = function(array) {
   
   array.forEach(item => {
     // Font Style
-    item.changeFontStyleObj(currentFontStyle);
+    item.changeFontStyle(currentFontStyle);
 
     // Text Message
     if (currentTextMessageInput.value) {
-      item.changeTextMessageObj(currentTextMessageInput.value);
+      item.changeTextMessage(currentTextMessageInput.value);
     } else {
-      item.changeTextMessageObj(currentTextMessageInput.placeholder);
+      item.changeTextMessage(currentTextMessageInput.placeholder);
     }
 
     // Font Weight
-    item.changeFontWeightObj(currentFontWeight);
+    item.changeFontWeight(currentFontWeight);
 
     // Letter Spacing
-    item.changeLetterSpacingObj(currentLetterSpacing);
+    item.changeLetterSpacing(currentLetterSpacing);
   })
 }
 
@@ -271,7 +271,7 @@ const changeFontListPropertiesAllItems = function(array) {
 // 9-2) Checked Checkbox - Add <li>
   const addList = function(fontSize) {
     // 객체 생성
-    const checkedItem = new CreateFontList(fontSize);
+    const checkedItem = new FontList(fontSize);
 
     // 배열 push
     fontListArr.push(checkedItem);
