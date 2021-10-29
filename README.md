@@ -1,18 +1,16 @@
 # Typographic Scale Project
 
+![all-color-crop](https://user-images.githubusercontent.com/89737184/139376364-84fe0c8e-1bcd-4af3-a605-7048a946a5ad.png)
+
+
 # Typographic Scale
-
----
-
 - Personal project
 - Term : about 2 weeks
 - Tools : HTML5, CSS3, Vanila JavaScript ES6
 - Links : https://0sinjoung.github.io/typoscale/
 
+
 ## 프로젝트 소개
-
----
-
 ### 아이디어
 
 개인 포트폴리오 사이트를 제작하려는 단계에서 디자인 툴 없이 바로 작업을 시작하려니 폰트 사이즈를 결정하는 데에서 막연함을 느꼈습니다.
@@ -37,10 +35,8 @@
 
 폰트 사이즈를 스케일에 맞춰 선별해 놓음으로써 브라우저 위에서 폰트 사이즈를 간단하게 비교하고 테스트해 볼 수 있습니다.
 
+
 ## 주요 기능
-
----
-
 ### 웹 타이포그래피 스케일
 
 ![typographic-scale](https://user-images.githubusercontent.com/89737184/139375628-c919598a-7ffe-4496-87ee-e9cb65350565.png)
